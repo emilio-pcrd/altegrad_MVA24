@@ -58,8 +58,32 @@ The paper \textit{Attention Is All You Need} introduced the Transformer model, w
 In the context of training a neural network, the \texttt{my\_patience} variable refers to the patience parameter used in early stopping during training. Early stopping is a technique used to prevent overfitting and stop training when a model’s performance on the validation set stops improving. It can prevent also from overfitting.
 
 \section{Question 3}
+\noindent
+For this question, I've decided to choose the last document of the test dataset. We can have a look at the
+\texttt{sentence attention coefficients}, and also to the \texttt{words attention coefficients}.
 
-This is my answer to question 3, with a citation \cite{vaswani2017attention}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\linewidth]{../figures/Sentence_attention_scores.pdf}
+    \caption{Sentence attention scores for the last document of the test dataset.}
+    \label{sentence-scores}    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\linewidth]{../figures/word_attention_scores.pdf}
+    \caption{Word attention scores for the last sentence of the last document of the test dataset.}
+    \label{word-scores}    
+\end{figure}
+
+
+\noindent
+In figure \ref{sentence-scores}, we can interpret that the $5^{th}$ and $6^{th}$ sentences are the most determinents
+in the choice of the model, helping it to classify if it's a good or bad review. In this case, the words
+\textit{brillant} and \textit{masterpiece} might be gamechanger in the classification.  
+\\
+\\
+\cite{vaswani2017attention}
 
 %------------------------------------------------
 
