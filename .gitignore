@@ -1,5 +1,7 @@
-./__MACOSX
+__pycache__/
 
-./__pycache__
+_MACOSX/
 
-./.idea
+.idea/
+
+data/
