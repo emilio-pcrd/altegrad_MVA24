@@ -1,0 +1,69 @@
+\documentclass[a4paper]{article} 
+\input{style/head.tex}
+
+%-------------------------------
+%	TITLE VARIABLES (identify your work!)
+%-------------------------------
+
+\newcommand{\yourname}{PICARD Emilio} % replace YOURNAME with your name
+\newcommand{\youremail}{emilio.picard@free.fr} % replace YOUREMAIL with your email
+\newcommand{\assignmentnumber}{1} % replace X with the lab session number
+
+\begin{document}
+
+%-------------------------------
+%	TITLE SECTION (do not modify unless you really need to)
+%-------------------------------
+\input{style/header.tex}
+
+%-------------------------------
+%	ASSIGNMENT CONTENT (add your responses)
+%-------------------------------
+
+\section{Question 1}
+
+\noindent
+The basic self-attention mechanism is a common approach to capture semantic representations of words. This consist on creating a single attention vector. Doing though, this method cannot handle tasks like sentiment classification, as there is not much information as input.
+\\
+\\
+\noindent
+A first approach to handle this is to add a max (or average) pooling layer at all time step of the forward path. however, this could be hard to implement in a RNN structure.
+\\
+\\
+\noindent
+Another good approach to improve basic self-attention mechanism is to 
+modify his input; to have more dependency in the $2D$ matrix of embeddings, before going throught the attention mechanism, it may be useful to use a bidirectional LSTM that outputs $H$, a $2D$ matix of size $n \times 2u$ (instead of having a unidirectionnal approach wich outputs a vector fo size $n$). This produces a more relevent sentence representation.
+\\
+\\
+\noindent
+Additionally, a common issue with basic self-attention is that it tends to focus on redundant information, where attention heads often concentrate on similar words or parts of the input. To mitigate this, a penalization term can be introduced to encourage diversity among attention heads and discourage redundancy. This penalization term, often implemented using the Frobenius norm, promotes the model to attend to different parts of the input, leading to better and more diverse sentence representations.
+
+
+\section{Question 2}
+\noindent
+The paper \textit{Attention Is All You Need} introduced the Transformer model, which replaced recurrent operations (like those in RNNs and LSTMs) with self-attention mechanisms. The motivations for this change were leaded in addressing several limitations of recurrent models, particularly for tasks like machine translation and other sequence-based problems.
+\\
+\\
+\noindent
+\begin{itemize}
+    \item from one time step to all time step (efficient in computing)
+    \item motivation for parallel processing
+    \item Long-Range Dependencies
+    \item number of computational steps it takes for information from one token to influence another token. difficulty to compute gradients in backward path.
+    \item more simple architecture
+\end{itemize}
+
+\section{Bonus (\textit{purpose of} \texttt{my\_patience} \textit{parameter})}
+\noindent
+In the context of training a neural network, the \texttt{my\_patience} variable refers to the patience parameter used in early stopping during training. Early stopping is a technique used to prevent overfitting and stop training when a model’s performance on the validation set stops improving. It can prevent also from overfitting.
+
+\section{Question 3}
+
+This is my answer to question 3, with a citation \cite{vaswani2017attention}. 
+
+%------------------------------------------------
+
+\bibliographystyle{plain}
+\bibliography{references} % citation records are in the references.bib document
+
+\end{document}
