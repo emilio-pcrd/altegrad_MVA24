@@ -23,48 +23,150 @@
 \section{Question 1}
 
 \noindent
-The basic self-attention mechanism is a common approach to capture semantic representations of words. This consist on creating a single attention vector. Doing though, this method cannot handle tasks like sentiment classification, as there is not much information as input.
+The basic self-attention mechanism is a common approach to capture the semantic representation
+of words. It typically relies on creating a single attention vector, but this approach can be
+limited when applied to tasks such as sentiment classification, as it lacks
+sufficient input variety to capture diverse aspects of the sentence.
 \\
 \\
 \noindent
-A first approach to handle this is to add a max (or average) pooling layer at all time step of the forward path. however, this could be hard to implement in a RNN structure.
+One approach to enhance the basic self-attention mechanism is to incorporate a max or
+average pooling layer over all time steps in the forward path. This can help aggregate
+features across time steps, but it might be challenging to implement within an RNN-based
+architecture, particularly when managing long sequences.
 \\
 \\
 \noindent
-Another good approach to improve basic self-attention mechanism is to 
-modify his input; to have more dependency in the $2D$ matrix of embeddings, before going throught the attention mechanism, it may be useful to use a bidirectional LSTM that outputs $H$, a $2D$ matix of size $n \times 2u$ (instead of having a unidirectionnal approach wich outputs a vector fo size $n$). This produces a more relevent sentence representation.
+A more effective improvement can be achieved by modifying the input to the attention mechanism.
+For instance, instead of using a unidirectional approach, a bidirectional LSTM can
+be employed to produce a richer representation. A bidirectional LSTM generates an output HH,
+a 2D matrix of size $n \times 2 u_n \times 2 u$ (where nn is the sequence length and 2u2u is the concatenated hidden states
+from both directions). This allows the attention mechanism to operate on a more informative
+representation, capturing both forward and backward dependencies in the sentence.
 \\
 \\
 \noindent
-Additionally, a common issue with basic self-attention is that it tends to focus on redundant information, where attention heads often concentrate on similar words or parts of the input. To mitigate this, a penalization term can be introduced to encourage diversity among attention heads and discourage redundancy. This penalization term, often implemented using the Frobenius norm, promotes the model to attend to different parts of the input, leading to better and more diverse sentence representations.
+Furthermore, a known issue with basic self-attention is its tendency to focus on redundant
+information, where multiple attention heads may concentrate on the same parts of
+the input. To address this, Lin et al. (2017) \cite{Lin} introduced a structured self-attentive mechanism that
+includes a penalization term. This term, based on the Frobenius norm, encourages the
+attention heads to focus on different parts of the sentence, promoting diversity and leading
+to more comprehensive sentence representations.
+\\
+\\
+\noindent
+Incorporating these enhancements, such as bidirectional context and penalization for
+redundancy, can significantly improve the performance of the basic self-attention mechanism.
 
 
 \section{Question 2}
 \noindent
-The paper \textit{Attention Is All You Need} introduced the Transformer model, which replaced recurrent operations (like those in RNNs and LSTMs) with self-attention mechanisms. The motivations for this change were leaded in addressing several limitations of recurrent models, particularly for tasks like machine translation and other sequence-based problems.
+According to the paper \cite{vaswani2023attentionneed}, The motivations for this
+change were leaded in addressing several limitations of recurrent models, particularly for
+tasks like machine translation and other sequence-based problems.
 \\
 \\
 \noindent
-\begin{itemize}
-    \item from one time step to all time step (efficient in computing)
-    \item motivation for parallel processing
-    \item Long-Range Dependencies
-    \item number of computational steps it takes for information from one token to influence another token. difficulty to compute gradients in backward path.
-    \item more simple architecture
-\end{itemize}
+Recurrent models process sequences sequentially, meaning each time step depends on the previous
+one. This limits parallelism and can lead to inefficiencies, especially with long sequences.
+Self-attention allows the model to process all tokens in the input sequence simultaneously,
+leading to faster computations.
+\\
+\\
+\noindent
+Furthermore, In contrast to RNNs, where each time step must wait for the computation
+of the previous one, self-attention enables parallel processing of tokens, significantly
+speeding up training and inference times. This is especially beneficial for tasks like
+machine translation, where large datasets are involved.
+\\
+\\
+\noindent
+Additionnaly, Recurrent models often struggle with capturing long-range
+dependencies in sequences, as the information has to pass through multiple
+time steps, leading to vanishing or exploding gradient problems. Self-attention
+directly connects every token with every other token in the sequence, making it easier
+to capture dependencies over long distances.
+\\
+\\
+\noindent
+Transformers also reduced computational complexity, thanks to self-attention. Finally,
+RNNs and LSTMs can suffer from gradient vanishing or exploding when processing long sequences,
+making it difficult to learn long-range patterns. Self-attention mitigates this issue by
+enabling shorter and more direct paths for gradient flow during backpropagation, improving
+training stability.
+
 
 \section{Bonus (\textit{purpose of} \texttt{my\_patience} \textit{parameter})}
 \noindent
-In the context of training a neural network, the \texttt{my\_patience} variable refers to the patience parameter used in early stopping during training. Early stopping is a technique used to prevent overfitting and stop training when a model’s performance on the validation set stops improving. It can prevent also from overfitting.
+In the context of training a neural network, the \texttt{my\_patience} variable refers to
+the patience parameter used in early stopping during training. Early stopping is a
+technique used to prevent overfitting and stop training when a model’s performance on
+the validation set stops improving. It can prevent also from overfitting.
 
-\section{Question 3}
+
+\section{Training process}
 \noindent
-For this question, I've decided to choose the last document of the test dataset. We can have a look at the
-\texttt{sentence attention coefficients}, and also to the \texttt{words attention coefficients}.
+I have trained the Hierarchical Attention Network during \texttt{$15$ epochs}.
+The hyperparameters can be seen in the notebook.
+\\
+\\
+\noindent
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../figures/train_loss.pdf}
+        \caption{train losses over epochs.}
+        \label{fig:image1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../figures/train_accs.pdf}
+        \caption{train accuracies over epochs.}
+        \label{fig:image2}
+    \end{subfigure}
+    \caption{train accuracies and losses during training, with 15 epochs.}
+    \label{fig:images}
+\end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.5\linewidth]{../figures/Sentence_attention_scores.pdf}
+    \includegraphics[width=.5\linewidth]{../figures/val_accs.pdf}
+    \caption{validation accuracies over epochs.}
+    \label{fig:third_image}
+\end{figure}
+We can see figure \ref{fig:images} the train losses and accuracies during training, wich demonstrate a good
+training process.
+\\
+We can also observe figure \ref{fig:third_image} the validation accuracies over the epochs.
+
+
+
+\section{Question 3}
+\noindent
+For this question, I selected the last document from the test dataset, where the model predicts
+it to be a positive ("yes") review. The sentence attention scores (Figure \ref{sentence-scores})
+show that certain sentences are given higher weight, likely because they express clear positive
+sentiment. For example, sentences like \textit{"a masterpiece"} or either \textit{"[...] downright brillant"}
+are prioritized by the model, as they play a key role in forming the positive classification.
+\\
+\\
+\noindent
+The word attention scores (Figure \ref{word-scores}) for the sentence \textit{":) First of all, Mulholland Drive 
+is downright brillant."} highlight words such
+as "downright" or "brillant," which strongly contribute to the positive sentiment if they are putting together.
+\\
+\\
+\noindent
+In conclusion, both sentence- and word-level attention scores indicate that the model identifies
+the most sentiment-relevant portions of the review, which explains its prediction of a
+positive ("yes") classification.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth]{../figures/Sentence_attention_scores.pdf}
     \caption{Sentence attention scores for the last document of the test dataset.}
     \label{sentence-scores}    
 \end{figure}
@@ -75,15 +177,6 @@ For this question, I've decided to choose the last document of the test dataset.
     \caption{Word attention scores for the last sentence of the last document of the test dataset.}
     \label{word-scores}    
 \end{figure}
-
-
-\noindent
-In figure \ref{sentence-scores}, we can interpret that the $5^{th}$ and $6^{th}$ sentences are the most determinents
-in the choice of the model, helping it to classify if it's a good or bad review. In this case, the words
-\textit{brillant} and \textit{masterpiece} might be gamechanger in the classification.  
-\\
-\\
-\cite{vaswani2017attention}
 
 %------------------------------------------------
 

@@ -3,44 +3,57 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: plain.bst
 Database file #1: references.bib
-You've used 1 entry,
+Too many commas in name 1 of "Zhouhan Lin, Cicero Nogueira dos Santos, Minwei Feng, Bing Xiang, Bowen Zhou, Yoshua Bengio" for entry Lin
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Zhouhan Lin, Cicero Nogueira dos Santos, Minwei Feng, Bing Xiang, Bowen Zhou, Yoshua Bengio" for entry Lin
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Zhouhan Lin, Cicero Nogueira dos Santos, Minwei Feng, Bing Xiang, Bowen Zhou, Yoshua Bengio" for entry Lin
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Zhouhan Lin, Cicero Nogueira dos Santos, Minwei Feng, Bing Xiang, Bowen Zhou, Yoshua Bengio" for entry Lin
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Zhouhan Lin, Cicero Nogueira dos Santos, Minwei Feng, Bing Xiang, Bowen Zhou, Yoshua Bengio" for entry Lin
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Zhouhan Lin, Cicero Nogueira dos Santos, Minwei Feng, Bing Xiang, Bowen Zhou, Yoshua Bengio" for entry Lin
+while executing---line 1090 of file plain.bst
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            503 strings with 4250 characters,
-and the built_in function-call counts, 695 in all, are:
-= -- 64
-> -- 43
-< -- 1
-+ -- 17
-- -- 16
-* -- 53
-:= -- 109
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 11
+            509 strings with 4349 characters,
+and the built_in function-call counts, 654 in all, are:
+= -- 53
+> -- 50
+< -- 0
++ -- 21
+- -- 18
+* -- 49
+:= -- 123
+add.period$ -- 5
+call.type$ -- 2
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 25
-empty$ -- 45
-format.name$ -- 16
-if$ -- 147
+cite$ -- 2
+duplicate$ -- 17
+empty$ -- 41
+format.name$ -- 18
+if$ -- 124
 int.to.chr$ -- 0
-int.to.str$ -- 1
+int.to.str$ -- 2
 missing$ -- 1
-newline$ -- 8
-num.names$ -- 2
-pop$ -- 14
+newline$ -- 12
+num.names$ -- 4
+pop$ -- 18
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 13
 quote$ -- 0
-skip$ -- 23
+skip$ -- 16
 stack$ -- 0
-substring$ -- 45
-swap$ -- 13
-text.length$ -- 1
+substring$ -- 11
+swap$ -- 2
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
+type$ -- 8
 warning$ -- 0
-while$ -- 5
-width$ -- 2
-write$ -- 13
+while$ -- 4
+width$ -- 3
+write$ -- 21
+(There were 6 error messages)

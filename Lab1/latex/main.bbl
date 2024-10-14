@@ -1,10 +1,14 @@
 \begin{thebibliography}{1}
 
-\bibitem{vaswani2017attention}
+\bibitem{vaswani2023attentionneed}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
-  Aidan~N Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
-\newblock Attention is all you need.
-\newblock In {\em Advances in neural information processing systems}, pages
-  5998--6008, 2017.
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need, 2023.
+
+\bibitem{Lin}
+Minwei Feng Bing Xiang Bowen Zhou Yoshua~Bengio Zhouhan~Lin, Cicero Nogueira
+  dos~Santos.
+\newblock A structured self-attentive sentence embedding.
+\newblock {\em ICLR}, ibm(1703.03130), 2017.
 
 \end{thebibliography}
