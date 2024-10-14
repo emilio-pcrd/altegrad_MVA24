@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{remy2019bidirectionalcontextawarehierarchicalattention}
+Jean-Baptiste Remy, Antoine Jean-Pierre Tixier, and Michalis Vazirgiannis.
+\newblock Bidirectional context-aware hierarchical attention network for
+  document understanding, 2019.
+
 \bibitem{vaswani2023attentionneed}
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
   Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.

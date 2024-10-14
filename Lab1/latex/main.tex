@@ -39,9 +39,7 @@ architecture, particularly when managing long sequences.
 \noindent
 A more effective improvement can be achieved by modifying the input to the attention mechanism.
 For instance, instead of using a unidirectional approach, a bidirectional LSTM can
-be employed to produce a richer representation. A bidirectional LSTM generates an output HH,
-a 2D matrix of size $n \times 2 u_n \times 2 u$ (where nn is the sequence length and 2u2u is the concatenated hidden states
-from both directions). This allows the attention mechanism to operate on a more informative
+be employed to produce a richer representation. This allows the attention mechanism to operate on a more informative
 representation, capturing both forward and backward dependencies in the sentence.
 \\
 \\
@@ -96,7 +94,7 @@ enabling shorter and more direct paths for gradient flow during backpropagation,
 training stability.
 
 
-\section{Bonus (\textit{purpose of} \texttt{my\_patience} \textit{parameter})}
+\section{Bonus (\textit{purpose of my\_patience parameter})}
 \noindent
 In the context of training a neural network, the \texttt{my\_patience} variable refers to
 the patience parameter used in early stopping during training. Early stopping is a
@@ -126,7 +124,7 @@ The hyperparameters can be seen in the notebook.
         \caption{train accuracies over epochs.}
         \label{fig:image2}
     \end{subfigure}
-    \caption{train accuracies and losses during training, with 15 epochs.}
+    \caption{train accuracies and losses during training, with $15$ epochs.}
     \label{fig:images}
 \end{figure}
 
@@ -177,6 +175,22 @@ positive ("yes") classification.
     \caption{Word attention scores for the last sentence of the last document of the test dataset.}
     \label{word-scores}    
 \end{figure}
+
+\section{Question 4}
+\noindent
+According to the article \cite{remy2019bidirectionalcontextawarehierarchicalattention}, Hierarchical Attention
+Networks (HAN) have several limitations related to both architecture and training.
+\\
+Firstly, the model processes sentences independently during the initial step of the architecture. This means
+that while one sentence is being analyzed, the model ignores other sentences, which can hinder its
+ability to capture the overall meaning of the document. As a result, the model may struggle with
+understanding context and relationships between sentences.
+\\
+Additionally, the embedding representation for each sentence is uniform across all instances, which
+limits the extraction of diverse and complementary information. By not differentiating embeddings
+for various instances, HAN may miss important nuances that could enhance the model's performance
+on document understanding tasks.
+
 
 %------------------------------------------------
 
