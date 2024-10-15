@@ -1,0 +1,10 @@
+torch
+seaborn
+numpy
+matplotlib
+tqdm
+pip
+urllib
+json
+operator
+
