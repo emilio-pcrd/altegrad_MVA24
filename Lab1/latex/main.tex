@@ -20,8 +20,7 @@
 %	ASSIGNMENT CONTENT (add your responses)
 %-------------------------------
 
-\section{Question 1}
-
+\section*{Question 1}
 \noindent
 The basic self-attention mechanism is a common approach to capture the semantic representation
 of words. It typically relies on creating a single attention vector, but this approach can be
@@ -57,7 +56,7 @@ Incorporating these enhancements, such as bidirectional context and penalization
 redundancy, can significantly improve the performance of the basic self-attention mechanism.
 
 
-\section{Question 2}
+\section*{Question 2}
 \noindent
 According to the paper \cite{vaswani2023attentionneed}, The motivations for this
 change were leaded in addressing several limitations of recurrent models, particularly for
@@ -94,7 +93,7 @@ enabling shorter and more direct paths for gradient flow during backpropagation,
 training stability.
 
 
-\section{Bonus (\textit{purpose of my\_patience parameter})}
+\section*{Bonus (\textit{purpose of my\_patience parameter})}
 \noindent
 In the context of training a neural network, the \texttt{my\_patience} variable refers to
 the patience parameter used in early stopping during training. Early stopping is a
@@ -102,10 +101,11 @@ technique used to prevent overfitting and stop training when a model’s perform
 the validation set stops improving. It can prevent also from overfitting.
 
 
-\section{Training process}
+\section*{Training process}
 \noindent
 I have trained the Hierarchical Attention Network during \texttt{$15$ epochs}.
-The hyperparameters can be seen in the notebook.
+The hyperparameters can be seen in the notebook. After few trainings, it seems that the
+results are accurate. The results below come from my last trained model.
 \\
 \\
 \noindent
@@ -141,7 +141,7 @@ We can also observe figure \ref{fig:third_image} the validation accuracies over 
 
 
 
-\section{Question 3}
+\section*{Question 3}
 \noindent
 For this question, I selected the last document from the test dataset, where the model predicts
 it to be a positive ("yes") review. The sentence attention scores (Figure \ref{sentence-scores})
@@ -153,11 +153,11 @@ are prioritized by the model, as they play a key role in forming the positive cl
 \noindent
 The word attention scores (Figure \ref{word-scores}) for the sentence \textit{":) First of all, Mulholland Drive 
 is downright brillant."} highlight words such
-as "downright" or "brillant," which strongly contribute to the positive sentiment if they are putting together.
+as "downright", "first" or either "brillant," which strongly contribute to the positive sentiment if they are putting together.
 \\
 \\
 \noindent
-In conclusion, both sentence- and word-level attention scores indicate that the model identifies
+In conclusion, both sentence and word-level attention scores indicate that the model identifies
 the most sentiment-relevant portions of the review, which explains its prediction of a
 positive ("yes") classification.
 
@@ -176,7 +176,7 @@ positive ("yes") classification.
     \label{word-scores}    
 \end{figure}
 
-\section{Question 4}
+\section*{Question 4}
 \noindent
 According to the article \cite{remy2019bidirectionalcontextawarehierarchicalattention}, Hierarchical Attention
 Networks (HAN) have several limitations related to both architecture and training.

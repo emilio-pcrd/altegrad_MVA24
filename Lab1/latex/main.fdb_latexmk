@@ -1,20 +1,20 @@
 # Fdb version 3
-["bibtex main"] 1728999593 "main.aux" "main.bbl" "main" 1728999603
+["bibtex main"] 1729003448 "main.aux" "main.bbl" "main" 1729003453
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1728999603 3411 c976e4b1da8d6feab8cca20a84c47fae "pdflatex"
+  "main.aux" 1729003453 2721 dd4de21c07d0da84a2ba1e0d5a2a7372 "pdflatex"
   "references.bib" 1728925790 1054 e1f6bfc2f29eef48674cad3a7011504f ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1728999603 "/home/emiliopicard/work/MVA/S1/altegrad/Labs/Lab1/latex/main.tex" "main.pdf" "main" 1728999603
+["pdflatex"] 1729003452 "/home/emiliopicard/work/MVA/S1/altegrad/Labs/Lab1/latex/main.tex" "main.pdf" "main" 1729003453
   "../figures/Sentence_attention_scores.pdf" 1728999433 18119 0f3b9ee4b5c6ac52759735d2f522a59a ""
-  "../figures/train_accs.pdf" 1728999539 7295 f672aa94a1ee8f7c42bf9c7dd7b78bc1 ""
-  "../figures/train_loss.pdf" 1728999563 7314 3435e1c8a41cddd4caf4ae6296a47547 ""
-  "../figures/val_accs.pdf" 1728999406 6671 24b5392871c0e6610c9f039aa7141565 ""
+  "../figures/train_accs.pdf" 1729003421 6763 df804dfd60a5fca1843c62ab4b26cc04 ""
+  "../figures/train_loss.pdf" 1729003402 7271 6adca6794fc0cd16032d939811763e85 ""
+  "../figures/val_accs.pdf" 1729003432 6665 5590432ef1dc564c9af5cd8de3d1998c ""
   "../figures/word_attention_scores.pdf" 1728999447 14685 e5acef22236897d5686f3a5034675d48 ""
   "/etc/texmf/web2c/texmf.cnf" 1718109403 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/emiliopicard/.texlive2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1717765355 1405755 d67d491c036c557a172a9b8ad63b2f6e ""
-  "/home/emiliopicard/work/MVA/S1/altegrad/Labs/Lab1/latex/main.tex" 1728999602 8444 bd12eab27b43ee2c495b8e9981d8683e ""
+  "/home/emiliopicard/work/MVA/S1/altegrad/Labs/Lab1/latex/main.tex" 1729003452 8576 5adb8898c39ecb2cf2f130ee38327d43 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/bitstrea/charter/bchb7t.tfm" 1136768653 2732 006d846b4d54f9b40899c7c3eecd771a ""
@@ -131,10 +131,10 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1718109407 4379155 98693266ff65f58d9f98aff394de12d2 ""
-  "main.aux" 1728999603 3411 c976e4b1da8d6feab8cca20a84c47fae "pdflatex"
-  "main.bbl" 1728999593 712 4971074761ab1e54af7396ea229efcd4 "bibtex main"
-  "main.out" 1728999603 774 89dd23d9192068cf7ecfbd2c903b6948 "pdflatex"
-  "main.tex" 1728999602 8444 bd12eab27b43ee2c495b8e9981d8683e ""
+  "main.aux" 1729003453 2721 dd4de21c07d0da84a2ba1e0d5a2a7372 "pdflatex"
+  "main.bbl" 1729003449 712 4971074761ab1e54af7396ea229efcd4 "bibtex main"
+  "main.out" 1729003453 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1729003452 8576 5adb8898c39ecb2cf2f130ee38327d43 ""
   "style/head.tex" 1728922802 1468 0bc82efa179687e8deed9f8f48132620 ""
   "style/header.tex" 1728852799 374 c87dc90363441f278175863625376e5c ""
   (generated)
