@@ -7,7 +7,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-############## Task 1
+##############
+# Task 1
+
 __path__ = '../datasets/CA-HepTh.txt'
 G = nx.read_edgelist(__path__, delimiter='\t')
 tot_nodes_G = G.number_of_nodes()
@@ -16,7 +18,9 @@ print(f"nuber of edge in G: {tot_edges_G}")
 print(f"nuber of nodes in G: {tot_nodes_G} \n")
 
 
-############## Task 2
+##############
+#  Task 2
+
 connected_components = list(nx.connected_components(G))
 print(f"number of connected components in G: {len(connected_components)}")
 
