@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{pmlr-v5-shervashidze09a}
+Nino Shervashidze, SVN Vishwanathan, Tobias Petri, Kurt Mehlhorn, and Karsten
+  Borgwardt.
+\newblock Efficient graphlet kernels for large graph comparison.
+\newblock In David van Dyk and Max Welling, editors, {\em Proceedings of the
+  Twelfth International Conference on Artificial Intelligence and Statistics},
+  volume~5 of {\em Proceedings of Machine Learning Research}, pages 488--495,
+  Hilton Clearwater Beach Resort, Clearwater Beach, Florida USA, 16--18 Apr
+  2009. PMLR.
+
+\end{thebibliography}
