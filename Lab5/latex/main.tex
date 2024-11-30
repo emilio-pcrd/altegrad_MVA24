@@ -1,0 +1,354 @@
+\documentclass[a4paper]{article} 
+\input{style/head.tex}
+
+%-------------------------------
+%	TITLE VARIABLES (identify your work!)
+%-------------------------------
+
+\newcommand{\yourname}{PICARD Emilio} % replace YOURNAME with your name
+\newcommand{\youremail}{emilio.picard@free.fr} % replace YOUREMAIL with your email
+\newcommand{\assignmentnumber}{4} % replace X with the lab session number
+
+\begin{document}
+
+%-------------------------------
+%	TITLE SECTION (do not modify unless you really need to)
+%-------------------------------
+\input{style/header.tex}
+
+%-------------------------------
+%	ASSIGNMENT CONTENT (add your responses)
+%-------------------------------
+
+\section*{Question 1}
+\subsection*{for directed graphs}
+By processing directed graphs, we can use the same algorithm
+as for undirected graphs, but we need to consider the direction of the edges.
+Thus, the random walk must be changed to take into account the direction of the edges.
+We just need to use outgoing edges to compute the transition probabilities.
+Additionnaly, the transition probability $\mathbb{P}(v_j | \phi(v_i))$, has to be limited to
+the set of nodes reachable from $v_i$ via outgoing edges.
+
+\subsection*{for weighted graphs}
+For weighted graphs, one can also modify the random walk: the probability of moving
+from $v_i$ to $v_j$ is proportional to the weight of the edge $(v_i, v_j)$, such as:
+$$
+\mathbb{P}(v_j | \phi(v_i)) = \frac{w(v_i, v_j)}{\sum_{v_k \in \text{outgoing neighbors}(v_i)} w(v_i, v_k)}.
+$$
+
+\section*{Question 2}
+
+By examining the two embeddings $X_1$ and $X_2$, we notice that the second row of $X_2$ is
+identical to the second row of $X_1$, except with the opposite sign. Despite this sign difference,
+the overall structure and relative distances between nodes remain unchanged
+in both embeddings. This is because DeepWalk embeddings focus on
+capturing the relative positions and relationships between nodes,
+rather than assigning fixed coordinates. This invariance to transformations
+such as reflections—in this case, along the second dimension—ensures that
+the embeddings still encode the same structural information. Thus, both 
+$X_1$ and $X_2$ are valid embeddings.	
+
+\section*{Question 3}
+
+In the architecture described in Task 10, there are two message-passing
+layers. Each message-passing layer aggregates information from the direct
+neighbors of a node. Consequently, after the second message-passing
+layer, each node incorporates information from its "neighbors of neighbors."
+This implies that the maximum distance between a node and the nodes
+contributing to the computation of $\hat{Y}_i$ in this GCN architecture is
+\textbf{2 edges}.
+\\
+\\
+More generally, for an architecture with $k$ message-passing layers,
+the maximum distance of nodes involved in the computation is $k$ edges.
+
+
+\section*{Question 4}
+\subsection*{(a)}
+To compute the matrix $Z^1$,
+let us first normalize the adjacency matrix.
+For $K_4$:
+\[
+A = \begin{pmatrix}
+0 & 1 & 1 & 1 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0
+\end{pmatrix}
+\]
+Thus,
+\[
+\Tilde{A} = A + I_4= \begin{pmatrix}
+0 & 1 & 1 & 1 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0
+\end{pmatrix} + \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix} = \begin{pmatrix}
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1
+\end{pmatrix}
+\]
+
+Then, with $\Tilde{D}{ii} = \sum_j \Tilde{A}{ij}$, we have that
+\[
+\Tilde{D} = \begin{pmatrix}
+4 & 0 & 0 & 0 \\
+0 & 4 & 0 & 0 \\
+0 & 0 & 4 & 0 \\
+0 & 0 & 0 & 4
+\end{pmatrix}\ \ \ \text{ and therefore }\ \ \ \Tilde{D}^{-1/2} = \begin{pmatrix}
+1/2 & 0 & 0 & 0 \\
+0 & 1/2 & 0 & 0 \\
+0 & 0 & 1/2 & 0 \\
+0 & 0 & 0 & 1/2 
+\end{pmatrix}
+\]
+\\
+Thus, the normalized adjacency matrix is
+\begin{align*}
+    \hat{A} &= \Tilde{D}^{-1/2}\ \Tilde{A}\ \Tilde{D}^{-1/2}\\
+    &= \begin{pmatrix}
+0.5 & 0 & 0 & 0 \\
+0 & 0.5 & 0 & 0 \\
+0 & 0 & 0.5 & 0 \\
+0 & 0 & 0 & 0.5
+\end{pmatrix} \begin{pmatrix}
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1  
+\end{pmatrix} \begin{pmatrix}
+0.5 & 0 & 0 & 0 \\
+0 & 0.5 & 0 & 0 \\
+0 & 0 & 0.5 & 0 \\
+0 & 0 & 0 & 0.5
+\end{pmatrix} \\
+&= \begin{pmatrix}
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25
+\end{pmatrix} 
+\end{align*}
+\\
+Then, compute $Z_0 = \text{ReLU} (\hat{A}\ X\ W^0)$, with  $X = \begin{pmatrix}
+    1\\1\\1\\1 \end{pmatrix}$, and $W^0 = \begin{pmatrix}
+        -0.8 & 0.5
+    \end{pmatrix}$.
+
+\[
+\hat{A}\ X = \begin{pmatrix}
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25
+\end{pmatrix} \begin{pmatrix}
+    1\\1\\1\\1 \end{pmatrix} = \begin{pmatrix}
+    1\\1\\1\\1 \end{pmatrix},
+\]
+so
+\[
+\hat{A}\ X\ W^0 = \begin{pmatrix} 1\\1\\1\\1 \end{pmatrix} \begin{pmatrix}
+        -0.8 & 0.5
+    \end{pmatrix} =  \begin{pmatrix}
+        -0.8 & 0.5 \\ -0.8 & 0.5 \\ -0.8 & 0.5 \\ -0.8 & 0.5
+    \end{pmatrix} .
+\]
+Finally we can compute,
+\[
+Z_0 = \text{ReLU} (\hat{A}\ X\ W^0) = \text{ReLU} (\begin{pmatrix}
+        -0.8 & 0.5 \\ -0.8 & 0.5 \\ -0.8 & 0.5 \\ -0.8 & 0.5
+    \end{pmatrix} ) = \begin{pmatrix}
+        0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5
+    \end{pmatrix} 
+\]
+Thus, we obtain $Z_1 = \text{ReLU} (\hat{A}\ Z^0\ W^1)$, with $\hat{A}$ and $Z^0$ as defined previously, and\\ $W^1 = \begin{pmatrix}
+        0.1 & 0.3 & -0.05 \\ -0.4 & 0.6 & 0.5
+    \end{pmatrix}.$
+\[
+\hat{A}\ Z^0 = \begin{pmatrix}
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \\
+0.25 & 0.25 & 0.25 & 0.25 \end{pmatrix} \begin{pmatrix}
+        0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5
+    \end{pmatrix}  = \begin{pmatrix}
+        0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5
+    \end{pmatrix}
+\]
+Then,
+\[
+\hat{A}\ Z^0\ W^1 = \begin{pmatrix}
+        0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5 \\ 0 & 0.5
+    \end{pmatrix} \begin{pmatrix}
+        0.1 & 0.3 & -0.05 \\ -0.4 & 0.6 & 0.5
+    \end{pmatrix} = \begin{pmatrix}
+-0.2 & 0.3 & 0.25 \\
+-0.2 & 0.3 & 0.25 \\
+-0.2 & 0.3 & 0.25 \\
+-0.2 & 0.3 & 0.25
+\end{pmatrix}
+\]
+We thus obtain:
+\[
+Z^1 =  \text{ReLU}(\hat{A}\ Z^0\ W^1) = \text{ReLU}(\begin{pmatrix}
+-0.2 & 0.3 & 0.25 \\
+-0.2 & 0.3 & 0.25 \\
+-0.2 & 0.3 & 0.25 \\
+-0.2 & 0.3 & 0.25
+\end{pmatrix}) = \begin{pmatrix}
+0 & 0.3 & 0.25 \\
+0 & 0.3 & 0.25 \\
+0 & 0.3 & 0.25 \\
+0 & 0.3 & 0.25
+\end{pmatrix}
+\]
+\subsection*{(b)}
+Let's do the same for $S_4$:
+\[
+A = \begin{pmatrix}
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{pmatrix}
+\]
+\[
+\Tilde{A} = A + I_4= \begin{pmatrix}
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{pmatrix} + \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix} = \begin{pmatrix}
+1 & 1 & 1 & 1 \\
+1 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 \\
+1 & 0 & 0 & 1
+\end{pmatrix}
+\]
+\\
+With $\Tilde{D}{ii} = \sum_j \Tilde{A}{ij}$, we have:
+\[
+\Tilde{D} = \begin{pmatrix}
+4 & 0 & 0 & 0 \\
+0 & 2 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 2
+\end{pmatrix}\ \ \ \text{  and therefore }\ \ \ \Tilde{D}^{-1/2} = \begin{pmatrix}
+1/2 & 0 & 0 & 0 \\
+0 & 1/\sqrt{2} & 0 & 0 \\
+0 & 0 & 1/\sqrt{2} & 0 \\
+0 & 0 & 0 & 1/\sqrt{2}
+\end{pmatrix}
+\]
+We thus obtain the normalized adjacency matrix:
+\begin{align*}
+    \hat{A} &= \Tilde{D}^{-1/2}\ \Tilde{A}\ \Tilde{D}^{-1/2}\\
+    &= \begin{pmatrix}
+0.5 & 0 & 0 & 0 \\
+0 & 1/\sqrt{2} & 0 & 0 \\
+0 & 0 & 1/\sqrt{2} & 0 \\
+0 & 0 & 0 & 1/\sqrt{2}
+\end{pmatrix} \begin{pmatrix}
+1 & 1 & 1 & 1 \\
+1 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 \\
+1 & 0 & 0 & 1
+\end{pmatrix} \begin{pmatrix}
+0.5 & 0 & 0 & 0 \\
+0 & 1/\sqrt{2} & 0 & 0 \\
+0 & 0 & 1/\sqrt{2} & 0 \\
+0 & 0 & 0 & 1/\sqrt{2}
+\end{pmatrix} \\
+&= \begin{pmatrix}
+0.25 & 0.3536 & 0.3536 & 0.3536 \\
+0.3536 & 0.5 & 0 & 0 \\
+0.3536 & 0 & 0.5 & 0 \\
+0.3536 & 0 & 0 & 0.5
+\end{pmatrix}
+\end{align*}
+\\
+Then, $Z_0 = \text{ReLU} (\hat{A}\ X\ W^0)$, where $X = \begin{pmatrix}
+    1\\1\\1\\1 \end{pmatrix}$ and $W^0 = \begin{pmatrix}
+        -0.8 & 0.5
+    \end{pmatrix}$.
+\[
+\hat{A}\ X = \begin{pmatrix}
+0.25 & 0.3536 & 0.3536 & 0.3536 \\
+0.3536 & 0.5 & 0 & 0 \\
+0.3536 & 0 & 0.5 & 0 \\
+0.3536 & 0 & 0 & 0.5
+\end{pmatrix} \begin{pmatrix}
+    1\\1\\1\\1 \end{pmatrix} = \begin{pmatrix}
+    1.3108\\0.8536\\0.8536\\0.8536
+\end{pmatrix}
+\]
+Then, 
+\[
+\hat{A}\ X\ W^0 = \begin{pmatrix} 1.3108\\0.8536\\0.8536\\0.8536 \end{pmatrix} \begin{pmatrix}
+        -0.8 & 0.5
+    \end{pmatrix} =  \begin{pmatrix}
+        -1.0486 & 0.6554 \\ -0.6829 & 0.4268 \\ -0.6829 & 0.4268 \\ -0.6829 & 0.4268
+    \end{pmatrix} 
+\]
+Finally,
+\[
+Z_0 = \text{ReLU} (\hat{A}\ X\ W^0) = \text{ReLU} (\begin{pmatrix}
+        -1.0486 & 0.6554 \\ -0.6829 & 0.4268 \\ -0.6829 & 0.4268 \\ -0.6829 & 0.4268
+    \end{pmatrix} ) = \begin{pmatrix}
+        0 & 0.6554 \\ 0 & 0.4268 \\ 0 & 0.4268 \\ 0 & 0.4268
+    \end{pmatrix} 
+\]
+Finally, we compute $Z_1 = \text{ReLU} (\hat{A}\ Z^0\ W^1)$, with $\hat{A}$ and $Z^0$ as defined previously, and\\ $W^1 = \begin{pmatrix}
+        0.1 & 0.3 & -0.05 \\ -0.4 & 0.6 & 0.5
+    \end{pmatrix}$
+\[
+\hat{A}\ Z^0 = \begin{pmatrix}
+0.25 & 0.3536 & 0.3536 & 0.3536 \\
+0.3536 & 0.5 & 0 & 0 \\
+0.3536 & 0 & 0.5 & 0 \\
+0.3536 & 0 & 0 & 0.5
+\end{pmatrix} \begin{pmatrix}
+        0 & 0.6554 \\ 0 & 0.4268 \\ 0 & 0.4268 \\ 0 & 0.4268
+    \end{pmatrix} = \begin{pmatrix}
+        0 & 0.5056 \\ 0 & 0.4518 \\ 0 & 0.4518 \\ 0 & 0.4518
+    \end{pmatrix}
+\]
+Then,
+\[
+\hat{A}\ Z^0\ W^1 = \begin{pmatrix}
+        0 & 0.5056 \\ 0 & 0.4518 \\ 0 & 0.4518 \\ 0 & 0.4518
+    \end{pmatrix} \begin{pmatrix}
+        0.1 & 0.3 & -0.05 \\ -0.4 & 0.6 & 0.5
+    \end{pmatrix} = \begin{pmatrix}
+-0.2022 & 0.3034 & 0.2528 \\ -0.1807 & 0.2711 & 0.2259 \\ -0.1807 & 0.2711 & 0.2259 \\ -0.1807 & 0.2711 & 0.2259
+\end{pmatrix}
+\]
+\\\\
+So finally, we obtain:
+\[
+Z^1 =  \text{ReLU}(\hat{A}\ Z^0\ W^1) = \text{ReLU}(\begin{pmatrix}
+-0.2022 & 0.3034 & 0.2528 \\ -0.1807 & 0.2711 & 0.2259 \\ -0.1807 & 0.2711 & 0.2259 \\ -0.1807 & 0.2711 & 0.2259
+\end{pmatrix}) = \begin{pmatrix}
+0 & 0.3034 & 0.2528 \\ 0 & 0.2711 & 0.2259 \\ 0 & 0.2711 & 0.2259 \\ 0 & 0.2711 & 0.2259
+\end{pmatrix}.
+\]
+
+%------------------------------------------------
+% \cite{pmlr-v5-shervashidze09a}
+% \bibliographystyle{plain}
+% \bibliography{references} % citation records are in the references.bib document
+
+\end{document}
